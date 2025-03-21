@@ -5,9 +5,15 @@ import mainImageSrc3 from "../assets/products/single product/Outdoor sofa set_2.
 import mainImageSrc4 from "../assets/products/single product/Stuart sofa 1.png";
 import SingleProductDescription from './SingleProductDescription';
 import RelatedProducts from './RelatedProducts';
+import { useParams } from "react-router";
+import { products } from "../utils/product";
+import { productImgUrl } from "../utils/productImgUrl";
 
 const ProductDetail = () => {
-  const [mainImage, setMainImage] = useState(mainImageSrc);
+  let { id } = useParams();
+  const product = products.find(pd => pd.id === parseInt(id, 10));
+ 
+  const [mainImage, setMainImage] = useState(productImgUrl(product.imageUrl));
   const [selectedColor, setSelectedColor] = useState("#FF0000");
   const [selectedSize, setSelectedSize] = useState("Small");
 
@@ -20,7 +26,7 @@ const ProductDetail = () => {
 
   const images = [
     { src: mainImageSrc, alt: "Asgaard Sofa", color: "#FF0000" },
-    { src: mainImageSrc2, alt: "Outdoor Sofa Set", color: "#0000FF" },
+    { src: productImgUrl(product.imageUrl), alt: "Outdoor Sofa Set", color: "#0000FF" },
     { src: mainImageSrc3, alt: "Outdoor Sofa Set 2", color: "#00FF00" },
     { src: mainImageSrc4, alt: "Stuart Sofa" },
   ];
@@ -41,6 +47,7 @@ const ProductDetail = () => {
     setSelectedSize(size);
   };
 
+ 
   return (
     <>
     <div className="section-container">
@@ -71,14 +78,14 @@ const ProductDetail = () => {
 
       {/* w-5/8 section */}
       <div className="w-full md:w-1/2 flex flex-col space-y-2">
-        <h1 className="text-2xl font-bold">Product Title</h1>
-        <p className="text-lg text-green-500">$Price</p>
+        <h1 className="text-2xl font-bold">{product.name}</h1>
+        <p className="text-lg">Rs. {product.price}</p>
         <div className="flex items-center">
           <span className="text-yellow-500">★ ★ ★ ★ ☆</span>
-          <span className="ml-2 text-gray-500">(100 reviews)</span>
+          <span className="ml-2 text-gray-500">({product.review} reviews)</span>
         </div>
         <p className="text-gray-700">
-          Product description goes here. It provides details about the product.
+          {product.description}
         </p>
 
         {/* Size Selection */}
@@ -134,11 +141,11 @@ const ProductDetail = () => {
         {/* Product sku,tag,category,share */}
         <div className="flex flex-col gap-3">
           <div className="gap-2 flex">
-            <span className="text-gray-w-500 w-16">SKU</span>:
+            <span className="text-gray-500 w-16">SKU</span>:
             <span className="text-gray-500">ABC123</span>
           </div>
           <div className="gap-2 flex">
-            <span className="text-gray-w-500 w-16">Tag</span>:
+            <span className="text-gray-500 w-16">Tag</span>:
             <span className="text-gray-500">Outdoor, Living Room</span>
           </div>
           <div className="gap-2 flex">
@@ -170,7 +177,7 @@ const ProductDetail = () => {
       </div>
 
       {/* description,addition description,reviews tab create section */}
-      <SingleProductDescription  />
+      <SingleProductDescription product={product} />
 
        <hr className="border-t border-gray-300"/>
 

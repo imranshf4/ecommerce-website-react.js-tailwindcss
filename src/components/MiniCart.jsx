@@ -62,7 +62,7 @@ export const MiniCart = () => {
         cartToggle ? "right-[0%]" : "right-[-100%]"
       }`}
     >
-      <h2 className="text-center text-lg font-semibold">Your Cart</h2>
+      <h2 className="text-center text-lg font-semibold">Shopping Cart</h2>
       <div className="mt-5 max-h-[70vh] overflow-y-auto">
         {/* cart product start */}
         {cart.map((item, index) => (

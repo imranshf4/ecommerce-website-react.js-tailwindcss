@@ -10,6 +10,7 @@ import Contact from "./pages/contact/Contact.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import Cart from "./components/Cart.jsx";
 import CheckoutPage from "./components/CheckoutPage.jsx";
+import ProductDetail from './components/ProductDetail';
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -23,6 +24,8 @@ createRoot(document.getElementById("root")).render(
         {/* cart and checkout page */}
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+
+        <Route path="/product/:id" element={<ProductDetail />} />
 
         {/* error page */}
         <Route path="*" element={<ErrorPage />} />
