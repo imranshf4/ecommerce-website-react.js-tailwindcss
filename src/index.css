@@ -12,9 +12,46 @@
 }
 
 /* styles.css or a similar file */
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  @apply px-4 py-2 ring-1 ring-primary hover:text-white hover:bg-primary rounded-full bg-white text-black text-lg;
+/* /* .swiper-button-prev:after, */
+.swiper-pagination-bullet{
+   @apply text-black;
 }
+
+.swiper-pagination-bullet .swiper-pagination-bullet-active{
+  background: #B88E2F !important;
+  color: #B88E2F !important;
+}
+.swiper-button-prev{
+  @apply text-sm w-5 h-5;
+}
+
+input[type="radio"] {
+  appearance: none; /* Hide the default radio button */
+  width: 16px; /* Set size */
+  height: 16px; /* Set size */
+  border: 2px solid gray; /* Border color */
+  border-radius: 50%; /* Make it circular */
+  outline: none; /* Remove outline */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+input[type="radio"]:checked {
+  background-color: black; /* Background color when checked */
+  border-color: black; /* Border color when checked */
+}
+
+input[type="radio"]:checked::before {
+  content: "";
+  display: block;
+  width: 8px; /* Inner circle size */
+  height: 8px; /* Inner circle size */
+  border-radius: 50%; /* Make it circular */
+  background: white; /* Inner circle color */
+  position: relative; /* Positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position */
+}
+
 
 

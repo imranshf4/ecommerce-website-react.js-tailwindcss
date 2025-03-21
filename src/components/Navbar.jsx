@@ -8,6 +8,7 @@ import compare from "../assets/home/vector.png";
 //index.css
 import "../index.css";
 import { useCart } from "../context/CartContext";
+import { useAddToCartContext } from "../context/AddToCartContext";
 
 // Define an array of nav items
 const navItems = [
@@ -37,7 +38,7 @@ const NavLinks = ({toggleMenu }) => {
   );
 };
 
-const CartIcon = ({handleCartToggle}) => {
+const CartIcon = ({handleCartToggle,cart}) => {
   return (
     <>
       <FiUser className="w-5 h-5" />
@@ -46,7 +47,7 @@ const CartIcon = ({handleCartToggle}) => {
       <div onClick={handleCartToggle}>
         <FaShoppingBag className="text-xl" />
         <sup className="absolute top-0 -right-3 bg-primary text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
-          0
+          {cart.length}
         </sup>
       </div>
     </>
@@ -56,8 +57,12 @@ const CartIcon = ({handleCartToggle}) => {
 
 
 const Navbar = () => {
-const { cartToggle, handleCartToggle } = useCart();
+  const { cartToggle, handleCartToggle } = useCart();
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false); // State to toggle mobile menu
+
+  //add to cart useContext
+  const { cart } = useAddToCartContext();
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState); // Correctly toggle menu state
@@ -101,7 +106,7 @@ const { cartToggle, handleCartToggle } = useCart();
 
         {/* Cart Icon */}
         <div className="hidden  md:flex gap-8 font-medium relative cursor-pointer">
-          <CartIcon handleCartToggle={handleCartToggle}/>
+          <CartIcon handleCartToggle={handleCartToggle} cart={cart}/>
         </div>
      
       </nav>

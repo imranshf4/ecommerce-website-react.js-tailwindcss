@@ -7,7 +7,8 @@ import shareIcon from "../assets/home/icon/share.png";
 
 
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, handleAddProduct }) => {
+    
     return (
         <div className="relative rounded-lg overflow-hidden bg-[#F4F5F7] group">
             <img 
@@ -48,7 +49,7 @@ const ProductCard = ({ product }) => {
             <div className=" bg-[#3A3A3A]/50 h-full w-full flex-col absolute py-30 inset-x-0 inset-y-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 <div className="space-y-4">
                 <div className='text-center'>
-                   <button className="bg-white text-primary/80 font-bold py-2 px-12 rounded hover:text-primary transition-colors">
+                   <button className="bg-white text-primary/80 font-bold py-2 px-12 rounded hover:text-primary transition-colors cursor-pointer" onClick={ ( ) => handleAddProduct (product)}>
                       Add to Cart
                    </button>
                 </div>
