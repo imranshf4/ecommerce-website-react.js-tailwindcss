@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #B88E2F;
+  --color-secondary: #FAF3EA;
+  --color-hero: #FAF3EA;
+  --color-singleP: #F9F1E7;
+}
+
+.section-container {
+  @apply max-w-screen-2xl container mx-auto py-12 px-8 md:px-15;
+}
+
+/* styles.css or a similar file */
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  @apply px-4 py-2 ring-1 ring-primary hover:text-white hover:bg-primary rounded-full bg-white text-black text-lg;
+}
+
+
